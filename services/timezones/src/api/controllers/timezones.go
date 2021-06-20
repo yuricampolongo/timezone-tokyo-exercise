@@ -1,7 +1,6 @@
 package controllers
 
 import (
-	"errors"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -23,7 +22,7 @@ func init() {
 func (t *timezone) GetTimezone(c *gin.Context) {
 	timezone, err := search.GetCityTimezone(c.Param("city"))
 	if err != nil {
-		c.JSON(http.StatusNotFound, errors.New("no city found with the given name"))
+		c.JSON(http.StatusNotFound, "no city found with the given name")
 		return
 	}
 	c.JSON(http.StatusOK, timezone)
