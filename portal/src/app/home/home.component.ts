@@ -19,25 +19,24 @@ export class HomeComponent implements OnInit {
 
   constructor(private timezoneService: TimezonesService) { }
 
-  ngOnInit(): void {
+  async ngOnInit() {
     let currentOffset = -11;
     for (let i = 0; i < 24; i++) {
       let timezoneInfo = { gmt_offset: currentOffset++, name: "" }
       this.timezones.push(timezoneInfo);
     }
-    this.getSavedTimezones();
+    await this.getSavedTimezones();
     this.updateTimes();
   }
 
   async getSavedTimezones() {
     let cities = [{ name: "tokyo", cardTopPosition: '43%'}]
     for (let city of cities) {
-      await this.timezoneService.getSavedTimezones(city.name).subscribe((resp) => {
-        if (resp) {
-          resp.cardTopPosition = city.cardTopPosition;
-          this.savedTimezones.push(resp)
-        }
-      });
+      let resp = await this.timezoneService.getSavedTimezones(city.name).toPromise();
+      if (resp) {
+        resp.cardTopPosition = city.cardTopPosition;
+        this.savedTimezones.push(resp)
+      }
     }
     let myTimezone = {
       currentTime: new Date(),
@@ -52,7 +51,7 @@ export class HomeComponent implements OnInit {
     if (index % 2 == 0) {
       return "#0000ff21"
     } else {
-      return "ffffffcc"
+      return "#ffffff00"
     }
   }
 
