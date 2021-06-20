@@ -1,0 +1,20 @@
+#world-map {
+    background-image:url("../../assets/world-map.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.container-fluid {
+    padding-right: 0px;
+    padding-left: 0px;
+}
+
+.card {
+    z-index: 1000;
+    width: 10em;
+    position: absolute;
+}
+
+.cityDate{
+    font-size: x-small;
+}

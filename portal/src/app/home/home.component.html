@@ -1,1 +1,36 @@
-<p>home works!</p>
+<div class="container-fluid h-100" id="world-map">
+    <div class="row h-100">
+        <div class="col-1" *ngFor="let timezone of [].constructor(12); let i = index">
+            <div class="container-fluid">
+                <div class="row h-100">
+                    <div class="col-6" [ngStyle]="{'background-color': getTimezoneColor(0)}"
+                        id="timezone-{{getTimezoneOffset(i * 2)}}">
+                        {{getTimezoneOffset(i * 2)}}
+                        <div *ngFor="let city of getSavedTimezone(getTimezoneOffset(i * 2)); let i = index">
+                            <div class="card" [ngStyle]="{'top': city.cardTopPosition}">
+                                <div class="card-body">
+                                    <h5>{{city.name}}</h5>
+                                    {{city.currentTime | date:'HH:mm:ss'}}<br/>
+                                    <span class="cityDate"> {{city.currentTime | date:'yyyy-MM-dd'}} </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6" [ngStyle]="{'background-color': getTimezoneColor(1)}"
+                        id="timezone-{{getTimezoneOffset(i * 2)}}">
+                        {{getTimezoneOffset(i * 2 + 1)}}
+                        <div *ngFor="let city of getSavedTimezone(getTimezoneOffset(i * 2 + 1)); let i = index">
+                            <div class="card" [ngStyle]="{'top': city.cardTopPosition}">
+                                <div class="card-body">
+                                    <h5>{{city.name}}</h5>
+                                    {{city.currentTime | date:'HH:mm:ss'}}<br/>
+                                    <span class="cityDate"> {{city.currentTime | date:'yyyy-MM-dd'}} </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
