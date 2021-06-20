@@ -2,8 +2,7 @@
 FROM node as build-step
 RUN mkdir -p /app
 WORKDIR /app
-COPY package.json /app
-COPY . /app
+COPY ./portal/ /app
 RUN npm install -g @angular/cli
 RUN npm install
 

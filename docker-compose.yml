@@ -12,6 +12,8 @@ services:
         image: "yuricampolongo/timezone-tokyo-portal"
         expose:
             - "4200"
+        links:
+            - timezone-service
         depends_on: 
             - timezone-service
         ports:
