@@ -8,3 +8,12 @@ services:
         ports:
             - 3000:3000
         restart: on-failure   
+  timezone-portal:
+        image: "yuricampolongo/timezone-tokyo-portal"
+        expose:
+            - "4200"
+        depends_on: 
+            - timezone-service
+        ports:
+            - 4200:4200
+        restart: on-failure   
