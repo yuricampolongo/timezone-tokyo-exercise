@@ -24,7 +24,7 @@ func init() {
 // an error will be returned if no city was found with the given name
 func GetCityTimezone(cityName string) (*models.TimezoneInfo, error) {
 	for _, v := range timezones {
-		if strings.ToLower(v.Name) == strings.ToLower(cityName) {
+		if strings.EqualFold(v.Name, cityName) {
 			return v, nil
 		}
 	}
