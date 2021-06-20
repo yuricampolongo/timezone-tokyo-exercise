@@ -1,0 +1,10 @@
+version: "3"
+
+services:
+  timezone-service:
+        image: "yuricampolongo/timezone-tokyo-service"
+        expose:
+            - "3000"
+        ports:
+            - 3000:3000
+        restart: on-failure   
