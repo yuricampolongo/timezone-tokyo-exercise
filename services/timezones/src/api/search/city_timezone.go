@@ -8,15 +8,16 @@ import (
 )
 
 var (
+	// contains all the cities that will be supported by the application
 	timezones []*models.TimezoneInfo
 )
 
 func init() {
+	// Add Tokyo to the list of supported cities
 	tokyo := &models.TimezoneInfo{
 		Name:      "Tokyo",
 		GMTOffset: 9,
 	}
-
 	timezones = append(timezones, tokyo)
 }
 

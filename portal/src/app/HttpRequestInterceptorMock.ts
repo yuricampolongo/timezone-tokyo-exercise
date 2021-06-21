@@ -3,6 +3,9 @@ import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } fr
 
 import { Observable, of } from 'rxjs';
 
+/**
+ * Mocks the requests for testing
+ */
 @Injectable()
 export class HttpRequestInterceptorMock implements HttpInterceptor {
     constructor(private injector: Injector) {}

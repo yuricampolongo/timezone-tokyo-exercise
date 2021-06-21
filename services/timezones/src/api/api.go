@@ -8,6 +8,8 @@ import (
 )
 
 const (
+	// We use the port 3000 as default, If you change this port
+	// you must also change in the docker-compose.yml file.
 	apiPort = ":3000"
 )
 
@@ -18,6 +20,7 @@ var (
 func init() {
 	router = gin.Default()
 
+	// Adding CORS permission to GET requests
 	router.Use(cors.New(cors.Config{
 		AllowOrigins:     []string{"*"},
 		AllowMethods:     []string{"GET"},
@@ -32,8 +35,10 @@ func init() {
 }
 
 func StartApi() {
+	// Starts the URL Mappings for this service
 	mapUrls()
 
+	// Starts the listening for requests
 	if err := router.Run(apiPort); err != nil {
 		panic(err)
 	}
